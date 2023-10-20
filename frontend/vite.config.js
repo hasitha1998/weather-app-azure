@@ -9,7 +9,7 @@ export default defineConfig({
     port:3000,
     proxy:{
       '/api':{
-        target: 'https://weather-azure-app.azurewebsites.net',
+        target: 'https://weather-azure-app.azurewebsites.net/',
         changeOrigin: true
       }
     }
