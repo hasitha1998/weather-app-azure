@@ -2,6 +2,7 @@ import  express from "express";
 import dotenv from "dotenv";
 
 import cookieParser from "cookie-parser";
+import path from "path";
 
 dotenv.config();
 
@@ -26,5 +27,10 @@ app.get("/", (req, res) => res.send("Server is ready"));
 
 app.use(notFound);
 app.use(errorHandler);
+
+app.use(express.static('frontend/build'));
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+});
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
